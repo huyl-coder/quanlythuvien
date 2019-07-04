@@ -7,6 +7,9 @@
         <div class='content'>
             <p>{{$user}}<p>
         </div>
+        <div>
+            <p>ádaasadasd</p>
+        </div>
     </body>
 </html>
 <script src="{{asset('js/jquery-1.7.1.min.js')}}"></script>
