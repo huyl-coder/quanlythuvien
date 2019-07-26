@@ -1,5 +1,15 @@
 <?php
-
+/**
+ * Xử lý action đăng kí người dùng
+ * 
+ * PHP version 7
+ * 
+ * @category Qtht
+ * @package  App\Http\Controllers\Auth
+ * @author   Huy <huygakinh113@gmail.com>
+ * @license  http://www.php.net/license/3_01.txt  PHP License 3.01
+ * @link     http://localhost/
+ */
 namespace App\Http\Controllers\Auth;
 
 use App\User;
@@ -8,6 +18,17 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+/**
+ * Xử lý action đăng kí người dùng
+ * 
+ * PHP version 7
+ * 
+ * @category Qtht
+ * @package  App\Http\Controllers\Auth
+ * @author   Huy <huygakinh113@gmail.com>
+ * @license  http://www.php.net/license/3_01.txt  PHP License 3.01
+ * @link     http://localhost/
+ */
 class RegisterController extends Controller
 {
     /*
@@ -28,7 +49,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin/home';
 
     /**
      * Create a new controller instance.
@@ -43,30 +64,36 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data 
+     * 
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return Validator::make(
+            $data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+            ]
+        );
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data 
+     * 
      * @return \App\User
      */
     protected function create(array $data)
     {
-        return User::create([
+        return User::create(
+            [
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+            ]
+        );
     }
 }

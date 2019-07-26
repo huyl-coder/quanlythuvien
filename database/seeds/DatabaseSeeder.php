@@ -11,6 +11,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        factory(App\lichSu::class, 100)->create();
+    }
+}
+class DatamauSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('vanbandi')->insert([
+            ['ten'=>'khoa','sokitu'=>4,'ngaytao'=>'2019-06-12','fieldmoi'=>'2131']
+        ]);
     }
 }
